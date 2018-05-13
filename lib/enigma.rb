@@ -20,10 +20,11 @@ class Enigma
     # joins array as encrypted
     # write to a file called encrypted.txt
   end
-
   def rots_added_to_offsets(key, date)
-    abcd = key.map do |k|
-      k + date
+    
+    abcd = []
+    key.each_with_index do |k, i|
+      abcd << k + date[i]
     end
   end
 

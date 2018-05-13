@@ -21,7 +21,7 @@ class EnigmaTest < Minitest::Test
   def test_rots_are_added_to_offsets
     enigma = Enigma.new('message.txt')
     key = KeyGenerator.new.rotations([1, 2, 3, 4, 5])
-    date = Date.new.generate_offset_numbers
+    date = Date.new.offsets
 
     assert_equal [19, 24, 36, 49], enigma.rots_added_to_offsets(key, date)
   end

@@ -26,7 +26,7 @@ class DateTest < Minitest::Test
 
   def test_generate_offset_array
     date = Date.new
-    assert_instance_of Array, date.generate_offset_numbers
+    assert_instance_of Array, date.offsets
   end
 
 end

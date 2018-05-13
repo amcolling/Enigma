@@ -5,7 +5,6 @@ class Date
 
 
   def initialize
-
   end
 
   def generate_date
@@ -17,36 +16,30 @@ class Date
   end
 
   def last_four_digits
-    square_date.to_s[-4..-1]
+    binding.pry
+    final_date = square_date.to_s[-4..-1]
+      final_date = final_date[-4..-1].split(',').map(&:to_i)
   end
+  #
+  # def offsets
+  #
+  #  last_four_digits.chars
+  # end
 
-  def generate_offset_numbers
-   last_four_digits.chars
-  end
-
-  def a_off
-    @offset[0].to_i
-  end
-
-  def b_off
-    @offset[1].to_i
-  end
-
-  def c_off
-    @offset[2].to_i
-  end
-
-  def d_off
-    @offset[3].to_i
-  end
+  # def a_off
+  #   @offset[0].to_i
+  # end
+  #
+  # def b_off
+  #   @offset[1].to_i
+  # end
+  #
+  # def c_off
+  #   @offset[2].to_i
+  # end
+  #
+  # def d_off
+  #   @offset[3].to_i
+  # end
 
 end
-
-
-# o1 = D.new
-#
-# puts "offset is: #{o1.offset}"
-# puts "A offset: #{o1.a_off}"
-# puts "B offset: #{o1.b_off}"
-# puts "C offset: #{o1.c_off}"
-# puts "D offset: #{o1.d_off}"
