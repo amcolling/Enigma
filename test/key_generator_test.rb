@@ -10,9 +10,14 @@ class KeyGeneratorTest < Minitest::Test
   end
 
   def test_random_key
-    key_generator = KeyGenerator.new
-    assert key_generator.random_key.length == 5
+    key = KeyGenerator.new.random_key
+    assert key.length == 5
+    assert_instance_of Array, key
+    assert_instance_of Integer, key[2]
+    assert key[1] >= 0
+    assert key[0] <= 9
   end
+
 
 
 end
