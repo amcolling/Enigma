@@ -1,12 +1,15 @@
 class Message
+  attr_reader :message
 
-  def initialize(message)
-    @message = message
+  def initialize
+    @message = File.read('message.txt').chomp
   end
 
-  def message_characters_into_array(message)
-    message.chars
+  def message_characters_into_array
+    @message.chars
   end
+
+
 
 
 
