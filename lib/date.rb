@@ -2,8 +2,9 @@ require 'pry'
 require 'date'
 class Date
   attr_reader :offset
+
   def initialize
-    @offset = generate_offset
+    @offset = []
   end
 
   def generate_date
@@ -15,24 +16,29 @@ class Date
   end
 
   def generate_offset
-    square_generate_offset.to_s[-4..-1]
+    square_date.to_s[-4..-1]
   end
 
-  def a_off
-    @offset[0].to_i
+  def generate_offset_array
+
+    @offset << generate_offset
   end
 
-  def b_off
-    @offset[1].to_i
-  end
-
-  def c_off
-    @offset[2].to_i
-  end
-
-  def d_off
-    @offset[3].to_i
-  end
+  # def a_off
+  #   @offset[0].to_i
+  # end
+  #
+  # def b_off
+  #   @offset[1].to_i
+  # end
+  #
+  # def c_off
+  #   @offset[2].to_i
+  # end
+  #
+  # def d_off
+  #   @offset[3].to_i
+  # end
 
 end
 
