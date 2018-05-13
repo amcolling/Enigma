@@ -11,8 +11,6 @@ class Enigma
 
   end
 
-  def gears
-    Key.new 
-    Date.new
+  
 
 end
