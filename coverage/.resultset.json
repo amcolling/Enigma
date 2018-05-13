@@ -1,0 +1,60 @@
+{
+  "Unit Tests": {
+    "coverage": {
+      "/Users/angicolling/classwork/enigma/Enigma/test/key_test.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/angicolling/classwork/enigma/Enigma/lib/key.rb": [
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1526173228
+  }
+}
