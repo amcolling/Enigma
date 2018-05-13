@@ -18,6 +18,8 @@ class KeyGeneratorTest < Minitest::Test
     assert key[0] <= 9
   end
 
-
-
+  def test_rotations
+    rotations = KeyGenerator.new.rotations([1, 2, 3, 4, 5])
+    assert_equal [12, 23, 34, 45], rotations
+  end
 end
