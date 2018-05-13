@@ -24,21 +24,21 @@ class Date
    last_four_digits.chars
   end
 
-  # def a_off
-  #   @offset[0].to_i
-  # end
-  #
-  # def b_off
-  #   @offset[1].to_i
-  # end
-  #
-  # def c_off
-  #   @offset[2].to_i
-  # end
-  #
-  # def d_off
-  #   @offset[3].to_i
-  # end
+  def a_off
+    @offset[0].to_i
+  end
+
+  def b_off
+    @offset[1].to_i
+  end
+
+  def c_off
+    @offset[2].to_i
+  end
+
+  def d_off
+    @offset[3].to_i
+  end
 
 end
 
