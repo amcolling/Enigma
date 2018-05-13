@@ -1,10 +1,11 @@
 require 'pry'
 require 'date'
+
 class Date
-  attr_reader :offset
+
 
   def initialize
-    @offset = []
+
   end
 
   def generate_date
@@ -15,13 +16,12 @@ class Date
     generate_date ** 2
   end
 
-  def generate_offset
+  def last_four_digits
     square_date.to_s[-4..-1]
   end
 
-  def generate_offset_array
-
-    @offset << generate_offset
+  def generate_offset_numbers
+   last_four_digits.chars
   end
 
   # def a_off
