@@ -13,6 +13,7 @@ class Key
   end
 
   def random_key
+    binding.pry
     @rand_offsets << key_generator[0..1].join.to_i
     @rand_offsets << key_generator[1..2].join.to_i
     @rand_offsets << key_generator[2..3].join.to_i

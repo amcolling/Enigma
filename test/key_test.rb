@@ -16,5 +16,10 @@ class KeyTest < Minitest::Test
   end
 
 
+  def test_random_key
+    key = Key.new
+    assert key.random_key.length == 5
+  end
+
 
 end
