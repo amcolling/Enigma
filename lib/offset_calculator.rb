@@ -2,12 +2,11 @@ require 'pry'
 require 'date'
 
 class OffsetCalculator
-  attr_reader :date,
-              :key
+  attr_reader :date
 
-  def initialize(date, key)
+
+  def initialize(date)
     @date = date
-    @key  = key
   end
 
   def reformat_date(date)
@@ -15,14 +14,20 @@ class OffsetCalculator
   end
 
   def squares_the_date(date)
+    date = date.strftime("%m%d%y").to_i
     date ** 2
   end
 
   def last_four_digits(date)
-    date = date.to_s[-4..-1].to_i
+    date_array = []
+    date.to_s[-4..-1] >> date_array
+    date.to_s[-4..-1] >> date_array
+    date.to_s[-4..-1] >> date_array
+    date.to_s[-4..-1] >> date_array
   end
 
   def offsets(date)
+
     date.slice(-4, 4)
     date.map do |number|
      number.to_i
