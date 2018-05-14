@@ -4,12 +4,12 @@ require './lib/key_generator'
 
 class KeyGeneratorTest < Minitest::Test
   def test_it_exists
-    key = KeyGenerator.new(rand(0..5))
-    assert_instance_of KeyGenerator, key_generator
+    key = KeyGenerator.new
+    assert_instance_of KeyGenerator, key
   end
 
   def test_random_key
-    key = KeyGenerator.new.random_key(rand(0..5))
+    key = KeyGenerator.new.random_key
     assert key.length == 5
     assert_instance_of Array, key
     assert_instance_of Integer, key[2]
@@ -20,5 +20,6 @@ class KeyGeneratorTest < Minitest::Test
   def test_rotations
     rotations = KeyGenerator.new.rotations([1, 2, 3, 4, 5])
     assert_equal [12, 23, 34, 45], rotations
+    binding.pry
   end
 end

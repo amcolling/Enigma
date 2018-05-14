@@ -1,5 +1,4 @@
 require './test/test_helper.rb'
-# require './lib/enigma'
 require './lib/offset_calculator'
 require './lib/key_generator'
 
@@ -9,11 +8,20 @@ class OffsetCalculatorTest < Minitest::Test
     assert_instance_of OffsetCalculator, offset
   end
 
+  def test_new_instance_generates_a_random_key
+    offset = OffsetCalculator.new(Date.today)
+
+    assert_instance_of KeyGenerator, offset.key
+  end
+  def test_it_generates_rotations_from_date_and_random_key
+    offset = OffsetCalculator.new(Date.today)
+    offset.generate_rotations
+  end
   def test_it_generates_a_four_value_array_from_todays_date
     offset = OffsetCalculator.new(Date.today)
-    binding.pry
-    assert_instance_of Array, offset.generate
-    assert_equal 4, offset.generate.length
+
+    assert_instance_of Array, offset.generate_offset
+    assert_equal 4, offset.generate_offset.length
   end
 
   def test_generate_date
