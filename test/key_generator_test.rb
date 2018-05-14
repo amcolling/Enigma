@@ -4,12 +4,12 @@ require './lib/key_generator'
 
 class KeyGeneratorTest < Minitest::Test
   def test_it_exists
-    key_generator = KeyGenerator.new
+    key = KeyGenerator.new(rand(0..5))
     assert_instance_of KeyGenerator, key_generator
   end
 
   def test_random_key
-    key = KeyGenerator.new.random_key
+    key = KeyGenerator.new.random_key(rand(0..5))
     assert key.length == 5
     assert_instance_of Array, key
     assert_instance_of Integer, key[2]

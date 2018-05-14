@@ -1,7 +1,7 @@
 
 class KeyGenerator
 
-  def random_key
+  def random_key(rand)
     Array.new(5).map do |num|
     rand(9)
     end
