@@ -17,18 +17,8 @@ class OffsetCalculator
     (reformat_date(date) ** 2).to_s
   end
 
-  def last_four_digits(date)
-    squares_the_date(date).slice(-4..-1)
-
-
+  def slice_into_four(date)
+    sliced = date.slice(-4..-1)
+    sliced
   end
 end
-
- #  def offsets(date)
- #
- #    date.slice(date)(-4, 4)
- #    date.map do |number|
- #     number.to_i
- #    end
- #  end
- # end
