@@ -14,26 +14,21 @@ class OffsetCalculator
   end
 
   def squares_the_date(date)
-    date = date.strftime("%m%d%y").to_i
-    date ** 2
-
+    (reformat_date(date) ** 2).to_s
   end
 
   def last_four_digits(date)
-    binding.pry
-    last_four_digits_array = []
-    new_array = date.to_s.split(',').each do |num|
-      num = Array.new
-      num.chars.last(4)
-      num
-    end
-  end
+    squares_the_date(date).slice(-4..-1)
 
-  def offsets(date)
 
-    date.slice(-4, 4)
-    date.map do |number|
-     number.to_i
-    end
   end
- end
+end
+
+ #  def offsets(date)
+ #
+ #    date.slice(date)(-4, 4)
+ #    date.map do |number|
+ #     number.to_i
+ #    end
+ #  end
+ # end
