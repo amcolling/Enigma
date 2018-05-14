@@ -5,21 +5,18 @@ require './lib/key_generator'
 
 class OffsetCalculatorTest < Minitest::Test
   def test_it_exists
-    skip
     offset = OffsetCalculator.new(Date.today)
     assert_instance_of OffsetCalculator, offset
   end
 
   def test_generate_date
-    skip
     offset = OffsetCalculator.new(Date.today)
     assert_instance_of Date, offset.date
   end
 
   def test_it_reformats_date
-    skip
     offset = OffsetCalculator.new(Date.today)
-    assert offset.reformat_date(offset.date) == Date.today.strftime("%m%d%y").to_i
+    assert offset.reformat_date(offset.date) == Date.today.strftime("%e%d%y").to_i
   end
 
   def test_it_squares_the_date_and_changes_integer_to_string
