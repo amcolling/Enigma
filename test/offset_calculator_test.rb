@@ -43,5 +43,6 @@ class OffsetCalculatorTest < Minitest::Test
     expected = [7, 1, 2, 4]
     assert_equal expected, actual
   end
-
+  def test
+  end
 end
