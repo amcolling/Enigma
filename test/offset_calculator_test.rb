@@ -24,11 +24,12 @@ class OffsetCalculatorTest < Minitest::Test
     assert_equal 2633537124, offset.squares_the_date(Date.today)
   end
 
-  def test_it_separates_last_four_digits_of_squared_date
+  def test_slice_into_four
     offset = OffsetCalculator.new(Date.today)
-    expected = 7124
-    
-    assert_equal expected, offset.last_four_digits(Date.today)
+    date_squared = "2633537124"
+    actual = offset.slice_into_four(date_squared)
+    expected = "7124"
+    assert_equal expected, actual
   end
 
   # def test_offsets

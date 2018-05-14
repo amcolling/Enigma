@@ -24,7 +24,6 @@ class Enigma
       @rotation << b_key
       @rotation << c_key
       @rotation << d_key
-      binding.pry
   end
 
 
