@@ -1,5 +1,8 @@
-require './test/test_helper.rb'
-require './lib/enigma'
+
+require './lib/date'
+require './lib/key_generator'
+
+
 
 
 class EnigmaTest < Minitest::Test
@@ -14,5 +17,11 @@ class EnigmaTest < Minitest::Test
     assert_equal result, enigma.message
   end
 
+  def test_rots_are_added_to_offsets
+    enigma = Enigma.new('message.txt')
+    key = KeyGenerator.new.rotations([1, 2, 3, 4, 5])
+    date = Date.new.offsets
 
+    assert_equal [19, 24, 36, 49], enigma.rots_added_to_offsets(key, date)
+  end
 end
