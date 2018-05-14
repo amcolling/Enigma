@@ -6,15 +6,16 @@ require './lib/key_generator'
 
 class OffsetCalculatorTest < Minitest::Test
   def test_it_exists
-    offset = OffsetCalculator.new
+    key = KeyGenerator.new.random_key
+    offset = OffsetCalculator.new(Date.today, key)
     assert_instance_of OffsetCalculator, offset
   end
 
   def test_generate_date
-    binding.pry
-    key = KeyGenerator.new
+    key = KeyGenerator.new.random_key
     offset = OffsetCalculator.new(Date.today, key)
     assert_instance_of Date, offset.date
+    binding.pry
   end
   #
   # def test_square_date
