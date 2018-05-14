@@ -14,4 +14,5 @@ class KeyGenerator
     rots << key[2..3].join.to_i
     rots << key[3..4].join.to_i
   end
+
 end
