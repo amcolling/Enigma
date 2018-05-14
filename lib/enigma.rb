@@ -2,7 +2,7 @@ require 'pry'
 class Enigma
   attr_reader :rotation
 
-  def initialize(my_message)
+  def initialize
     @character_map =
     [ "a", "b", "c", "d", "f","g","h", "i", "j",
     "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
@@ -12,22 +12,24 @@ class Enigma
     @rotation = []
   end
 
-  def combine_rotations_and_offsets
+  def combine_rotations_and_offsets(key, date)
     key = KeyGenerator.new
-    offset = OffsetCalculator.new(Date.today)
+    key_1 = key.rotations(key)
+    offset = OffsetCalculator.new(date)
     a = []
-    a << offset.generate[0] + key.rotations[0]
-    a << offset.generate[1] + key.rotations[1]
-    a << offset.generate[2] + key.rotations[2]
-    a << offset.generate[3] + key.rotations[3]
+    a << offset.generate[0] + key_1.rotations[0]
+    a << offset.generate[1] + key_1.rotations[1]
+    a << offset.generate[2] + key_1.rotations[2]
+    a << offset.generate[3] + key_1.rotations[3]
     a
   end
 
 
-  def encrypt(single_character)
+  def encrypt_single(my_message, rotation_key)
       @character_map.zip(@character_map.rotate(a[0])).to_h
-
   end
+
+
 
 
     # offsets and rotations added together

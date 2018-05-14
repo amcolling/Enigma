@@ -1,13 +1,8 @@
 
 class KeyGenerator
 
-  def random_key
-    Array.new(5).map do |num|
-    rand(9)
-    end
-  end
-
-  def rotations(key = random_key)
+  def rotations(key = rand(10000..99999))
+    key = key.digits.reverse
     rots = []
     rots << key[0..1].join.to_i
     rots << key[1..2].join.to_i

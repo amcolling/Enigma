@@ -8,27 +8,23 @@ require './lib/enigma'
 
 class EnigmaTest < Minitest::Test
   def test_it_exists
-    enigma = Enigma.new("this is so secret ..end..")
+    enigma = Enigma.new
     assert_instance_of Enigma, enigma
   end
 
-  def test_message_characters_into_array
-    enigma = Enigma.new("this is so secret ..end..")
-
-    assert_equal result, enigma.message
-  end
-
   def test_combine_rotations_and_offsets
-    enigma = Enigma.new("this is so secret ..end..")
+    enigma = Enigma.new
     key = KeyGenerator.new
     offset = OffsetCalculator.new(Date.today)
     assert_equal "", enigma.combine_rotations_and_offsets
   end
 
 
-  def test_encrypt
+  def test_encrypt_single
     enigma = Enigma.new("t")
-    assert_equal ["t", "h", "i", "s"], enigma.encrypt("t")
+    key = KeyGenerator.new
+    offset = OffsetCalculator.new(Date.today)
+    assert_equal ["t", "h", "i", "s"], enigma.encrypt_single("t")
   end
 
 
