@@ -1,10 +1,9 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require './lib/enigma'
+
 require './lib/date'
 require './lib/key_generator'
-# require 'simplecov'
-# SimpleCov.start
+
+
+
 
 class EnigmaTest < Minitest::Test
   def test_it_exists
