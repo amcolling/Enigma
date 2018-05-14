@@ -7,7 +7,8 @@ class OffsetCalculator
   def initialize(date)
     @date = date
   end
-
+  def
+  end
   def reformat_date(date)
     date.strftime("%e%d%y").to_i
   end
