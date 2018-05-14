@@ -10,12 +10,12 @@ class OffsetCalculator
     @key  = key
   end
 
-  def generate_date
-    DateTime.now.strftime("%m%d%y").to_i
+  def reformat_date(date)
+    date.strftime("%m%d%y").to_i
   end
 
-  def square_date
-    generate_date ** 2
+  def squares_the_date(date)
+    date ** 2
   end
 
   def last_four_digits
