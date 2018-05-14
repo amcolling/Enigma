@@ -18,11 +18,11 @@ class OffsetCalculator
     date ** 2
   end
 
-  def last_four_digits
-    binding.pry
-    final_date = square_date.to_s[-4..-1]
-      final_date = final_date[-4..-1].split(',').map(&:to_i)
+  def last_four_digits(date)
+    date = date.to_s[-4..-1].to_i
   end
+
+
   #
   # def offsets
   #
