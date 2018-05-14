@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
+require './test/test_helper.rb'
 require './lib/enigma'
 require './lib/offset_calculator'
 require './lib/key_generator'
@@ -37,6 +36,12 @@ class OffsetCalculatorTest < Minitest::Test
     expected = 5737
     actual = offset.last_four_digits(124536345737)
     assert_equal expected, actual
+  end
+
+  def test_offsets
+    key = KeyGenerator.new.random_key
+    offset = OffsetCalculator.new(Date.today, key)
+    assert_equal [], offset.offsets(3323232)
   end
 
 end
