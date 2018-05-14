@@ -9,6 +9,19 @@ class OffsetCalculatorTest < Minitest::Test
     assert_instance_of OffsetCalculator, offset
   end
 
+<<<<<<< HEAD
+=======
+  def test_it_generates_a_four_value_array_from_todays_date
+    offset = OffsetCalculator.new(Date.today)
+
+    assert_instance_of Array, offset.generate
+    assert_equal 4, offset.generate.length
+    assert_instance_of Integer, offset.generate[1]
+    assert_instance_of Array, offset.generate
+    assert_equal 4, offset.generate.length
+
+  end
+>>>>>>> 9b3c3ac0e0b4d04c3192353dc371f9c483f89b58
 
   def test_generate_date
     offset = OffsetCalculator.new(Date.today)

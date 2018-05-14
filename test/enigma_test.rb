@@ -21,7 +21,7 @@ class EnigmaTest < Minitest::Test
 
 
   def test_encrypt_single
-    enigma = Enigma.new("t")
+    enigma = Enigma.new
     key = KeyGenerator.new
     offset = OffsetCalculator.new(Date.today)
     assert_equal ["t", "h", "i", "s"], enigma.encrypt_single("t")
