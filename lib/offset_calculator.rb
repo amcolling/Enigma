@@ -17,8 +17,12 @@ class OffsetCalculator
   end
 
   def slice_into_four(date)
-    # binding.pry
     sliced = date.slice(-4..-1)
     sliced
+  end
+
+  def string_to_int_array(string)
+    array = string.chars
+    array.map(&:to_i)
   end
 end

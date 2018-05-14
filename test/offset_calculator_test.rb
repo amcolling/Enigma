@@ -28,16 +28,20 @@ class OffsetCalculatorTest < Minitest::Test
   def test_slice_into_four
     offset = OffsetCalculator.new(123456)
     date_squared = "2633537124"
+
     actual = offset.slice_into_four(date_squared)
     expected = "7124"
 
     assert_equal expected, actual
   end
 
-  # def test_offsets
-  #   skip
-  #   offset = OffsetCalculator.new(Date.today)
-  #   assert_equal [], offset.offsets(3323232)
-  # end
+  def test_it_turns_four_digit_string_into_array
+    offset = OffsetCalculator.new(Date.today)
+    four_numbers = "7124"
+
+    actual = offset.string_to_int_array(four_numbers)
+    expected = [7, 1, 2, 4]
+    assert_equal expected, actual
+  end
 
 end
