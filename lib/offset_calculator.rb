@@ -7,8 +7,14 @@ class OffsetCalculator
   def initialize(date)
     @date = date
   end
-  def
+
+  def generate
+    formatted_date = reformat_date(@date)
+    squared_date = squares_the_date(formatted_date)
+    sliced_square = slice_into_four(squared_date)
+    string_to_int_array(sliced_square)
   end
+
   def reformat_date(date)
     date.strftime("%e%d%y").to_i
   end
