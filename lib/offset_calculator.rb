@@ -2,20 +2,11 @@ require 'pry'
 require 'date'
 
 class OffsetCalculator
-  attr_reader :date,
-              :rotations
+  attr_reader :date
+
 
   def initialize(date)
     @date = date
-    @rotations = []
-  end
-
-
-  def generate
-    formatted_date = reformat_date(@date)
-    squared_date = squares_the_date(formatted_date)
-    sliced_square = slice_into_four(squared_date)
-    string_to_int_array(sliced_square)
   end
 
   def reformat_date(date)
@@ -40,7 +31,8 @@ class OffsetCalculator
     formatted_date = reformat_date(@date)
     squared_date = squares_the_date(formatted_date)
     sliced_square = slice_into_four(squared_date)
-    string_to_int_array(sliced_square)
+    string_to_int = string_to_int_array(slice_into_four)
+
   end
 
 
