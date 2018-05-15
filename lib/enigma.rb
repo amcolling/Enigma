@@ -11,6 +11,13 @@ class Enigma
     # @a = []
   end
 
+  def encrypt_single(my_message, key, offset)
+    rotations = combine_rotations_and_offsets(key, offset)
+    zipped_hash = @character_map.zip(@character_map.rotate(rotations[0])).to_h
+    encrypted_letter = zipped_hash.fetch(my_message)
+    encrypted_letter
+  end
+
   def combine_rotations_and_offsets(key, offset)
     rotation_array = []
     rotation_array << offset[0] + key[0]
@@ -18,19 +25,10 @@ class Enigma
     rotation_array << offset[2] + key[2]
     rotation_array << offset[3] + key[3]
     rotation_array
-
   end
 
-  def encrypt_single(my_message, key, offset)
-    rotations = combine_rotations_and_offsets(key, offset)
-    zipped_hash = @character_map.zip(@character_map.rotate(rotations[0])).to_h
-    encrypted_letter = zipped_hash(my_message)
-    return encrypted_letter
-  end
 
   def encrypt_message(my_message, key, offset)
-    # key = KeyGenerator.new
-    # offset = OffsetCalculator.new
     letters = my_message.to_s.downcase.split("")
     count = 0
     letters.map do |letter|
