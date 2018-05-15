@@ -27,7 +27,7 @@ class EnigmaTest < Minitest::Test
     enigma = Enigma.new
     key = [37,77,76,66]
     offset = [7,1,2,4]
-    assert_equal "z", enigma.encrypt_single("t", key, offset)
+    assert_equal "y", enigma.encrypt_single("t", key, offset)
   end
 
   def test_encrypt_message
@@ -35,7 +35,7 @@ class EnigmaTest < Minitest::Test
     enigma = Enigma.new
     key = [37,77,76,66]
     offset = [7,1,2,4]
-    assert_equal "", enigma.encrypt_message("this is so secret ..end..", key, offset)
+    assert_equal "sggq9hq8rn8qdbpcs999dmb9 ", enigma.encrypt_message("this is so secret ..end..", key, offset)
   end
 
 
