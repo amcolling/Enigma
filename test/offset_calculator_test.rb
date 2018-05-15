@@ -8,6 +8,7 @@ class OffsetCalculatorTest < Minitest::Test
     assert_instance_of OffsetCalculator, offset
   end
 
+<<<<<<< HEAD
   def test_new_instance_generates_a_random_key
     offset = OffsetCalculator.new(Date.today)
 
@@ -23,11 +24,9 @@ class OffsetCalculatorTest < Minitest::Test
     assert_instance_of Array, offset.generate_offset
     assert_equal 4, offset.generate_offset.length
   end
+=======
+>>>>>>> 47b602dabbebf9cbf989ab34d76d5e1bd83dde5b
 
-  def test_generate_date
-    offset = OffsetCalculator.new(Date.today)
-    assert_instance_of Date, offset.date
-  end
 
   def test_it_reformats_date
     offset = OffsetCalculator.new(Date.today)
@@ -43,20 +42,32 @@ class OffsetCalculatorTest < Minitest::Test
   def test_slice_into_four
     offset = OffsetCalculator.new(123456)
     date_squared = "2633537124"
-
     actual = offset.slice_into_four(date_squared)
     expected = "7124"
-
     assert_equal expected, actual
   end
 
   def test_it_turns_four_digit_string_into_array
     offset = OffsetCalculator.new(Date.today)
     four_numbers = "7124"
-
     actual = offset.string_to_int_array(four_numbers)
     expected = [7, 1, 2, 4]
     assert_equal expected, actual
   end
+
+  def test_it_generates_a_four_value_array_from_todays_date
+    offset = OffsetCalculator.new(Date.today)
+    assert_instance_of Array, offset.generate
+    assert_equal 4, offset.generate.length
+    assert_instance_of Integer, offset.generate[1]
+    assert_equal  [4, 3, 2, 4], offset.generate
+  end
+
+  def test_generate_date
+    offset = OffsetCalculator.new(Date.today)
+    assert_instance_of Date, offset.date
+    assert_equal  [4, 3, 2, 4], offset.generate
+  end
+
 
 end

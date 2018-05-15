@@ -2,15 +2,22 @@ require 'pry'
 require 'date'
 
 class OffsetCalculator
+<<<<<<< HEAD
   attr_reader :date,
               :key,
               :rotations
+=======
+  attr_reader :date
+
+
+>>>>>>> 47b602dabbebf9cbf989ab34d76d5e1bd83dde5b
   def initialize(date)
     @date      = date
     @key       = KeyGenerator.new
     @rotations = []
   end
 
+<<<<<<< HEAD
   def generate_rotations
     off_array = generate_offset
     rot_array = @key.rotations
@@ -23,6 +30,8 @@ class OffsetCalculator
     string_to_int_array(sliced_square)
   end
 
+=======
+>>>>>>> 47b602dabbebf9cbf989ab34d76d5e1bd83dde5b
   def reformat_date(date)
     date.strftime("%e%d%y").to_i
   end
@@ -40,4 +49,14 @@ class OffsetCalculator
     array = string.chars
     array.map(&:to_i)
   end
+
+  def generate
+    formatted_date = reformat_date(@date)
+    squared_date = squares_the_date(formatted_date)
+    sliced_square = slice_into_four(squared_date)
+    string_to_int = string_to_int_array(slice_into_four)
+
+  end
+
+
 end
