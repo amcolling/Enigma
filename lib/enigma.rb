@@ -21,8 +21,8 @@ class Enigma
   end
 
   def encrypt_single(my_message)
-    
-      @character_map.zip(@character_map.rotate(@a[0])).to_h
+    @character_map.zip(@character_map.rotate(@a[0])).to_h
+    binding.pry
   end
 
   def encrypt_message(my_message, rotation_key)
