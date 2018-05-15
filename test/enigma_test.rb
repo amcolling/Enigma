@@ -13,10 +13,9 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_combine_rotations_and_offsets
-
     enigma = Enigma.new
     key = KeyGenerator.new
-    offset = OffsetCalculator.new(Date.today)
+    offset = OffsetCalculator.new([4, 3, 2, 4])
     assert_equal "", enigma.combine_rotations_and_offsets(key.rotations, offset.generate)
   end
 
