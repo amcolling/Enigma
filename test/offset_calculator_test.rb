@@ -9,6 +9,8 @@ class OffsetCalculatorTest < Minitest::Test
     assert_instance_of OffsetCalculator, offset
   end
 
+<<<<<<< HEAD
+=======
   def test_it_generates_a_four_value_array_from_todays_date
     offset = OffsetCalculator.new(Date.today)
 
@@ -19,6 +21,7 @@ class OffsetCalculatorTest < Minitest::Test
     assert_equal 4, offset.generate.length
 
   end
+>>>>>>> 9b3c3ac0e0b4d04c3192353dc371f9c483f89b58
 
   def test_generate_date
     offset = OffsetCalculator.new(Date.today)
@@ -39,10 +42,8 @@ class OffsetCalculatorTest < Minitest::Test
   def test_slice_into_four
     offset = OffsetCalculator.new(123456)
     date_squared = "2633537124"
-
     actual = offset.slice_into_four(date_squared)
     expected = "7124"
-
     assert_equal expected, actual
   end
 
@@ -54,10 +55,11 @@ class OffsetCalculatorTest < Minitest::Test
     assert_equal expected, actual
   end
 
-  def test_rotation_cogs
-    key = KeyGenerator.new.rotations([1, 2, 3, 4, 5])
-    offset = OffsetCalculator.new(Date.today, key)
-    assert_equal [], enigma.rotation_cogs(Date.today, key)
+  def test_it_generates_a_four_value_array_from_todays_date
+    offset = OffsetCalculator.new(Date.today)
+    assert_instance_of Array, offset.generate
+    assert_equal 4, offset.generate.length
+    assert_instance_of Integer, offset.generate[1]
   end
 
 end
