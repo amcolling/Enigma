@@ -25,7 +25,7 @@ class EnigmaTest < Minitest::Test
   def test_encrypt_single
     # skip
     enigma = Enigma.new
-    key = [37,77,76,66]
+    key = "37766"
     offset = [7,1,2,4]
     assert_equal "y", enigma.encrypt_single("t", key, offset)
   end
@@ -33,17 +33,25 @@ class EnigmaTest < Minitest::Test
   def test_encrypt_message
     # skip
     enigma = Enigma.new
-    key = [37,77,76,66]
+    key = "37766"
     offset = [7,1,2,4]
     assert_equal "sggq9hq8rn8qdbpcs999dmb9 ", enigma.encrypt_message("this is so secret ..end..", key, offset)
   end
 
   def test_decrypt_single
+    # skip
     enigma = Enigma.new
-    key = [37,77,76,66]
+    key = "37766"
     offset = [7,1,2,4]
     assert_equal "t", enigma.decrypt_single("y", key, offset)
   end
 
+  def test_turn_key_into_four_two_digit_value_array
+    skip
+    key = "37766"
+    enigma = Enigma.new
+
+    assert_equal [37,77,76,66], enigma.turn_key_into_four_two_digit_value_array(key)
+  end
 
 end

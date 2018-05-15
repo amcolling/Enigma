@@ -42,18 +42,28 @@ class Enigma
 
   def decrypt_single(my_message, key, offset)
     rotations = combine_rotations_and_offsets(key, offset)
-    zipped_hash = @character_map.zip(@character_map.rotate(rotations[0])).to_h
+    zipped_hash = @character_map.zip(@character_map.rotate(rotations[0]*-1)).to_h
     encrypted_letter = zipped_hash.fetch(my_message)
     encrypted_letter
+    binding.pry
   end
 
+  def turn_key_into_four_two_digit_value_array(key)
+    rots = []
+    rots << key[0..1].to_i
+    rots << key[1..2].to_i
+    rots << key[2..3].to_i
+    rots << key[3..4].to_i
+    rots
+  end
 
   def combine_rotations_and_offsets(key, offset)
+    key_array = turn_key_into_four_two_digit_value_array(key)
     rotation_array = []
-    rotation_array << offset[0] + key[0]
-    rotation_array << offset[1] + key[1]
-    rotation_array << offset[2] + key[2]
-    rotation_array << offset[3] + key[3]
+    rotation_array << offset[0] + key_array[0]
+    rotation_array << offset[1] + key_array[1]
+    rotation_array << offset[2] + key_array[2]
+    rotation_array << offset[3] + key_array[3]
     rotation_array
   end
 
