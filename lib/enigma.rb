@@ -22,12 +22,12 @@ class Enigma
     end.join
   end
 
-  def decrypt(my_message, key, offset)
-    my_message = string.to_s.downcase.split("")
+  def decrypt_message(my_message, key, offset)
+    my_message = my_message.to_s.downcase.split("")
     count = 0
     decryption = my_message.map do |letter|
       (count = 0) if count == 4
-      encrypted_letter = decrypt_single(letter, offset[count])
+      encrypted_letter = decrypt_single(letter, key, offset[count])
       count += 1
       encrypted_letter
     end.join
@@ -45,7 +45,6 @@ class Enigma
     zipped_hash = @character_map.zip(@character_map.rotate(rotations[0]*-1)).to_h
     encrypted_letter = zipped_hash.fetch(my_message)
     encrypted_letter
-    binding.pry
   end
 
   def turn_key_into_four_two_digit_value_array(key)

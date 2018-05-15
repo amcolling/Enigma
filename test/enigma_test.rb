@@ -46,6 +46,15 @@ class EnigmaTest < Minitest::Test
     assert_equal "t", enigma.decrypt_single("y", key, offset)
   end
 
+  def test_decrypt_message
+    # skip
+    enigma = Enigma.new
+    key = "37766"
+    offset = [7,1,2,4]
+    assert_equal "this is so secret ..end..", enigma.decrypt_message("sggq9hq8rn8qdbpcs999dmb9 ", key, offset)
+  end
+
+
   def test_turn_key_into_four_two_digit_value_array
     skip
     key = "37766"
