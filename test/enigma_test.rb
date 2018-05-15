@@ -16,12 +16,11 @@ class EnigmaTest < Minitest::Test
     enigma = Enigma.new
     key = KeyGenerator.new
     offset = OffsetCalculator.new([4, 3, 2, 4])
-    assert_equal "", enigma.combine_rotations_and_offsets(key.rotations, offset.generate)
+    assert enigma.combine_rotations_and_offsets(key.rotations, offset.string_to_int_array("7124"))
   end
 
 
   def test_encrypt_single
-    skip
     enigma = Enigma.new
     key = KeyGenerator.new
     offset = OffsetCalculator.new(Date.today)

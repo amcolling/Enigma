@@ -45,11 +45,11 @@ class OffsetCalculatorTest < Minitest::Test
     assert_equal  [4, 3, 2, 4], offset.generate
   end
 
-  # def test_generate_date
-  #   offset = OffsetCalculator.new(Date.today)
-  #   assert_instance_of Date, offset.date
-  #   assert_equal  [4, 3, 2, 4], offset.generate
-  # end
+  def test_generate_date
+    offset = OffsetCalculator.new(Date.today)
+    assert_instance_of Date, offset.date
+    assert_equal  [4, 3, 2, 4], offset.generate
+  end
 
 
 end
