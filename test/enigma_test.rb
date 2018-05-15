@@ -23,7 +23,7 @@ class EnigmaTest < Minitest::Test
 
 
   def test_encrypt_single
-    # skip
+    skip
     enigma = Enigma.new
     key = "37766"
     offset = [7,1,2,4]
@@ -31,7 +31,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_encrypt_message
-    # skip
+    skip
     enigma = Enigma.new
     key = "37766"
     offset = [7,1,2,4]
@@ -39,7 +39,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_decrypt_single
-    # skip
+    skip
     enigma = Enigma.new
     key = "37766"
     offset = [7,1,2,4]
@@ -47,11 +47,18 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_decrypt_message
-    # skip
+    skip
     enigma = Enigma.new
     key = "37766"
     offset = [7,1,2,4]
     assert_equal "this is so secret ..end..", enigma.decrypt_message("sggq9hq8rn8qdbpcs999dmb9 ", key, offset)
+  end
+
+  def test_crack_works
+    enigma = Enigma.new
+    date = [7,1,2,4]
+
+    assert_equal "this is so secret ..end..", enigma.crack("sggq9hq8rn8qdbpcs999dmb9 ", [7,1,2,4])
   end
 
 

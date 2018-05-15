@@ -68,10 +68,10 @@ class Enigma
 
 
   def crack(my_message, date)
-    key = 9999
-    cracking = decrypt(string, key, date)
+    key = "9999"
+    cracking = decrypt_message(my_message, key, date)
     until cracking[-7..-1] == "..end.." do
-      cracking = decrypt(string, key, date)
+      cracking = decrypt_message(my_message, key, date)
       key += 1
       break if key == 99999
     end
