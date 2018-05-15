@@ -1,15 +1,17 @@
 
 class KeyGenerator
 
-  def rotations
-    key = rand(1000..99999)
-    new_key = key.digits
-    rots = []
-    rots << new_key[0..1]
-    rots << new_key[1..2]
-    rots << new_key[2..3]
-    rots << new_key[3..4]
-    rots.flatten[0..4]
+  def random_key
+    Array.new(5).map do |num|
+    rand(9)
+    end
   end
 
+  def rotations(key = random_key)
+    rots = []
+    rots << key[0..1].join.to_i
+    rots << key[1..2].join.to_i
+    rots << key[2..3].join.to_i
+    rots << key[3..4].join.to_i
+  end
 end

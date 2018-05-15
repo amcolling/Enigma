@@ -38,5 +38,12 @@ class EnigmaTest < Minitest::Test
     assert_equal "sggq9hq8rn8qdbpcs999dmb9 ", enigma.encrypt_message("this is so secret ..end..", key, offset)
   end
 
+  def test_decrypt_single
+    enigma = Enigma.new
+    key = [37,77,76,66]
+    offset = [7,1,2,4]
+    assert_equal "t", enigma.decrypt_single("y", key, offset)
+  end
+
 
 end

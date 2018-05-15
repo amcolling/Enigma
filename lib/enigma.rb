@@ -21,12 +21,8 @@ class Enigma
       encrypted_letter
     end.join
   end
-  
-  def decrypt(my_message, key=rand(10000..99999), date=Date.today)
-    @key = key
-    @date = date
-    offset = OffsetCalculator.new
-    offset = rotator.rotation_sequence(key, date)
+
+  def decrypt(my_message, key, offset)
     my_message = string.to_s.downcase.split("")
     count = 0
     decryption = my_message.map do |letter|
@@ -38,6 +34,13 @@ class Enigma
   end
 
   def encrypt_single(my_message, key, offset)
+    rotations = combine_rotations_and_offsets(key, offset)
+    zipped_hash = @character_map.zip(@character_map.rotate(rotations[0])).to_h
+    encrypted_letter = zipped_hash.fetch(my_message)
+    encrypted_letter
+  end
+
+  def decrypt_single(my_message, key, offset)
     rotations = combine_rotations_and_offsets(key, offset)
     zipped_hash = @character_map.zip(@character_map.rotate(rotations[0])).to_h
     encrypted_letter = zipped_hash.fetch(my_message)
