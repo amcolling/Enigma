@@ -13,31 +13,32 @@ class CipherTest < Minitest::Test
 
   def test_encrypt_single
     cipher = Cipher.new
-    key = [23, 35, 56, 67]
-    assert_equal "d", cipher.encrypt_single("t", 0, key)
+    rotations = [31, 38, 58, 71]
+    assert_equal "l", cipher.encrypt_single("t", 0, rotations)
   end
 
   def test_encrypt_message
     cipher = Cipher.new
-    key = [23, 35, 56, 67]
+    key = "23567"
+    date = 160518
     my_message = "this is so secret ..end.."
-    assert_equal "ddzhue9zckoh1.86d6p01ju0v", cipher.encrypt_message("this is so secret ..end..", key)
+    assert_equal "lg1l2h.3knql9b  l9r49mw43", cipher.encrypt_message("this is so secret ..end..", key, date)
   end
 
   def test_decrypt_single
-    skip
     cipher = Cipher.new
-    key = "37766"
-    offset = [7,1,2,4]
-    assert_equal "t", cipher.decrypt_single("y", key, offset)
+    rotations = [-31, -38, -58, -71]
+    assert_equal "t", cipher.decrypt_single("l", 0, rotations)
   end
+
+
   def test_decrypt_message
-    skip
     cipher = Cipher.new
-    key = "37766"
-    offset = [7,1,2,4]
-    assert_equal "this is so secret ..end..", cipher.decrypt_message("sggq9hq8rn8qdbpcs999dmb9 ", key, offset)
+    key = "23567"
+    date = 160518
+    assert_equal "this is so secret ..end..", cipher.decrypt_message("lg1l2h.3knql9b  l9r49mw43", key, date)
   end
+
   def test_crack_works
       skip
 
