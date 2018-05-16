@@ -1,8 +1,10 @@
 require 'pry'
+require 'date'
 class Enigma
   attr_reader :a
 
   def initialize
+    # @key = KeyGenerator.new.create
     @character_map =
     [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
     "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
@@ -11,41 +13,60 @@ class Enigma
 
   end
 
+<<<<<<< HEAD
   def encrypt_message(my_message)
+=======
+  def encrypt_message(my_message, key = @key, date = Date.today)
+    offset = OffsetCalculator.new(key, date)
+    offset.offsets
+    rots = rotations(key)
+>>>>>>> 5ef644a5d36cf0c7399f2d709074d96f2340986e
     letters = my_message.to_s.downcase.split("")
     count = 0
     letters.map do |letter|
       (count = 0) if count == 4
-      encrypted_letter = encrypt_single(letter, key, offset[count])
+      encrypted_letter = encrypt_single(letter, rots, offset[count])
       count += 1
       binding.pry
       encrypted_letter
     end.join
   end
 
-  def decrypt_message(my_message, key, offset)
+  def decrypt_message(my_message, key = @key, offset)
+    rots = rotations(key)
     my_message = my_message.to_s.downcase.split("")
     count = 0
     decryption = my_message.map do |letter|
       (count = 0) if count == 4
-      encrypted_letter = decrypt_single(letter, key, offset[count])
+      encrypted_letter = decrypt_single(letter, rots, offset[count])
       count += 1
       encrypted_letter
     end.join
   end
 
   def encrypt_single(my_message, key, offset)
-    rotations = combine_rotations_and_offsets(key, offset)
+
+    rots = rotations(key)
+    rotations = combine_rotations_and_offsets(rots, offset)
     zipped_hash = @character_map.zip(@character_map.rotate(rotations[0])).to_h
     encrypted_letter = zipped_hash.fetch(my_message)
     encrypted_letter
   end
 
   def decrypt_single(my_message, key, offset)
-    rotations = combine_rotations_and_offsets(key, offset)
+    rots = rotations(key)
+    rotations = combine_rotations_and_offsets(rots, offset)
     zipped_hash = @character_map.zip(@character_map.rotate(rotations[0]*-1)).to_h
     encrypted_letter = zipped_hash.fetch(my_message)
     encrypted_letter
+  end
+
+  def rotations(key = @key)
+    rots = []
+    rots << key[0..1].join.to_i
+    rots << key[1..2].join.to_i
+    rots << key[2..3].join.to_i
+    rots << key[3..4].join.to_i
   end
 
   def turn_key_into_four_two_digit_value_array(key)
