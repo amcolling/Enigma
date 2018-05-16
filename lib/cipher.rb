@@ -50,17 +50,19 @@ class Cipher
       four_letters = letters.shift(4)
       4.times do |num|
         decrypted_message << encrypt_single(four_letters[num], num, rotations)
-        binding.pry
+
         end
     end
     decrypted_message.compact.join
 end
 
-  def crack
-    key = ("9999").to_i
-    cracking = encrypt_message(message, key, date)
-    until cracking[-7..-1] == "..end.." do
-      cracking = encrypt_message(message,key,date)
+  def crack(message, date = Date.today)
+    key = '9999'
+    cracking = decrypt_message(message, key, date)
+    key = key.to_i
+    # binding.pry
+    until cracking[-7..-1] == '..end..' do
+      cracking = decrypt_message(message, key, date)
       key += 1
       break if key == 99999
     end

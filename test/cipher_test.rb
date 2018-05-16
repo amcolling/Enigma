@@ -40,14 +40,10 @@ class CipherTest < Minitest::Test
   end
 
   def test_crack_works
-      skip
-
       cipher = Cipher.new
-      cipher = Cipher.new(message, key = KeyGenerator.new, date = Date.today)
-      date = [7,1,2,4]
-      cipher.decrypt_message("sggq9hq8rn8qdbpcs999dmb9 ", key, offset)
-      assert_equal "this is so secret ..end..", cipher.crack
-      # ("sggq9hq8rn8qdbpcs999dmb9 ", cipher.date)
+      date = 160518
+      actual = cipher.crack("lg1l2h.3knql9b  l9r49mw43", date)
+      assert_equal "this is so secret ..end..", actual
   end
 
 
