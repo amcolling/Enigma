@@ -13,4 +13,4 @@ output_file = File.open(ARGV[1],'w')
 output_file.write(e.crack(input_text, ARGV[2].to_i))
 output_file.close
 
-puts "Created 'cracked.txt' with the cracked key #{} and date #{e.date}"
+puts "Created 'cracked.txt' with the cracked key #{e.cracked_key} and date #{e.date}"

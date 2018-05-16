@@ -7,7 +7,6 @@ require './lib/cipher'
 class CipherTest < Minitest::Test
   def test_it_exists
     cipher = Cipher.new
-    offset = OffsetCalculator.new
     assert_instance_of Cipher, cipher
   end
 
@@ -43,6 +42,6 @@ class CipherTest < Minitest::Test
       cipher = Cipher.new
       date = 160518
       actual = cipher.crack("lg1l2h.3knql9b  l9r49mw43", date)
-      assert_equal 23567, actual
+      assert_equal 'this is so secret ..end..', actual
   end
 end

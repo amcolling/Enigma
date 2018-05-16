@@ -2,15 +2,14 @@ require 'pry'
 require 'date'
 class Enigma
   attr_reader :key,
-              :date
+              :date,
+              :cracked_key
 
   def initialize
-    @key = 0
+    @key  = 0
     @date = 0
+    @cracked_key = 0
   end
-
-
-
 
   def encrypt(my_message, key = KeyGenerator.new.create, date = Date.today)
     @key = key
@@ -26,6 +25,7 @@ class Enigma
 
   def crack(output, date = Date.today)
     @date = date
+    @cracked_key = Cipher.new.crack_the_key(output, date)
     Cipher.new.crack(output, date)
   end
 

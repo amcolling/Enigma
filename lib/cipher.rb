@@ -57,14 +57,20 @@ class Cipher
   end
 
   def crack(message, date = Date.today)
-    key = 9999
-    cracking = decrypt_message(message, key, date)
-    key = key.to_i
-    until cracking[-7..-1] == '..end..' do
-      cracking = decrypt_message(message, key, date)
-      key += 1
-      break if key == 99999
-    end
-    key -= 1
+    cracked_key = crack_the_key(message, date)
+    decrypt_message(message, cracked_key, date)
   end
+
+  def crack_the_key(message, date)
+      key = 9999
+      cracking = decrypt_message(message, key, date)
+      key = key.to_i
+      until cracking[-7..-1] == '..end..' do
+        cracking = decrypt_message(message, key, date)
+        key += 1
+        break if key == 99999
+      end
+      key -= 1
+  end
+
 end
