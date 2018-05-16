@@ -4,7 +4,7 @@ class Enigma
   attr_reader :a
 
   def initialize
-    # @key = KeyGenerator.new.create
+    @key = KeyGenerator.new.create
     @character_map =
     [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
     "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
@@ -15,7 +15,8 @@ class Enigma
 
   def encrypt_message(my_message, key = @key, date = Date.today)
     offset = OffsetCalculator.new(key, date)
-    offset.offsets
+    key = offset.key
+    rotations = offset.create
     rots = rotations(key)
     letters = my_message.to_s.downcase.split("")
     count = 0
