@@ -10,6 +10,13 @@ class OffsetCalculator
     @date = date
   end
 #if date is Date object it converts it to 6 digit style
+  def reformat_date
+    if @date.class == Date
+      @date.strftime("%e%m%y").to_i
+    else
+      @date
+    end
+  end
 #after converted, it squares the date
 #after it squares the date, it takes the last four digits
 #after it gets last four digits, it makes an array of those
@@ -23,7 +30,7 @@ class OffsetCalculator
   # end
   #
   # def reformat_date(date)
-  #   date.strftime("%e%d%y").to_i
+  #   date.strftime("%e%m%y").to_i
   # end
   #
   # def squares_the_date(date)
