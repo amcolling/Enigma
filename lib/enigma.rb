@@ -8,16 +8,17 @@ class Enigma
     "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
     "u", "v", "w", "x", "y", "z", "0", "1", "2", "3",
     "4", "5", "6", "7", "8", "9", " ", ".", ","]
-    # @a = []
+
   end
 
-  def encrypt_message(my_message, key, offset)
+  def encrypt_message(my_message)
     letters = my_message.to_s.downcase.split("")
     count = 0
     letters.map do |letter|
       (count = 0) if count == 4
       encrypted_letter = encrypt_single(letter, key, offset[count])
       count += 1
+      binding.pry
       encrypted_letter
     end.join
   end
@@ -67,11 +68,13 @@ class Enigma
   end
 
 
-  def crack(my_message, date)
-    key = "9999"
-    cracking = decrypt_message(my_message, key, date)
+  def crack
+    key = ("9999").to_i
+    cracking = encrypt_message
+    (message, key, date)
     until cracking[-7..-1] == "..end.." do
-      cracking = decrypt_message(my_message, key, date)
+      cracking = encrypt_message
+      (message, key, date)
       key += 1
       break if key == 99999
     end
