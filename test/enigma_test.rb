@@ -8,13 +8,13 @@ require './lib/enigma'
 
 class EnigmaTest < Minitest::Test
   def test_it_exists
-    skip
+    # skip
     enigma = Enigma.new
     assert_instance_of Enigma, enigma
   end
 
   def test_combine_rotations_and_offsets
-    skip
+    # skip
     enigma = Enigma.new
     key = KeyGenerator.new
     offset = [7,1,2,4]
@@ -23,7 +23,7 @@ class EnigmaTest < Minitest::Test
 
 
   def test_encrypt_single
-    skip
+    # skip
     enigma = Enigma.new
     key = "37766"
     offset = [7,1,2,4]
@@ -31,7 +31,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_encrypt_message
-    skip
+    # skip
     enigma = Enigma.new
     key = "37766"
     offset = [7,1,2,4]
@@ -39,7 +39,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_decrypt_single
-    skip
+    # skip
     enigma = Enigma.new
     key = "37766"
     offset = [7,1,2,4]
@@ -47,7 +47,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_decrypt_message
-    skip
+    # skip
     enigma = Enigma.new
     key = "37766"
     offset = [7,1,2,4]
@@ -55,6 +55,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_crack_works
+    # skip
     enigma = Enigma.new
     date = [7,1,2,4]
 
@@ -63,7 +64,7 @@ class EnigmaTest < Minitest::Test
 
 
   def test_turn_key_into_four_two_digit_value_array
-    skip
+    # skip
     key = "37766"
     enigma = Enigma.new
 
