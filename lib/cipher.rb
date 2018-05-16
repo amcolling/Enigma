@@ -1,10 +1,11 @@
 require 'pry'
 require 'date'
 class Cipher
-  attr_reader :a
+  attr_reader :key,
+              :character_map
 
-  def initialize
-    @key = KeyGenerator.new.create
+  def initialize(key)
+    @key = key
     @character_map =
     [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
     "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
@@ -12,10 +13,12 @@ class Cipher
     "4", "5", "6", "7", "8", "9", " ", ".", ","]
   end
 
-  def encrypt_single(my_message, key = "37766")
+
+  def encrypt_single(my_message)
     zipped_hash = @character_map.zip(@character_map.rotate(@key[0])).to_h
     encrypted_letter = zipped_hash.fetch(my_message)
     encrypted_letter
+  #   binding.pry
   end
 
   def decrypt_single(my_message, key, offset)

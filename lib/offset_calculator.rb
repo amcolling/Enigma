@@ -7,6 +7,7 @@ class OffsetCalculator
 #takes in key and date or generates them.
   def initialize(key = KeyGenerator.new.create, date = Date.today)
     @key  = key
+
     @date = date
   end
 
@@ -16,7 +17,7 @@ class OffsetCalculator
     squared_date = square_the_date(date)
     last_four = slice_into_four(squared_date)
     date_array = string_to_int_array(last_four)
-    add_arrays(key_array, date_array)
+    binding.pry
   end
 
 #if date is Date object it converts it to 6 digit style

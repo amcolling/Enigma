@@ -6,44 +6,43 @@ require './lib/cipher'
 
 class CipherTest < Minitest::Test
   def test_it_exists
-    cipher = Cipher.new
+    cipher = Cipher.new([23, 35, 56, 67])
+    offset = OffsetCalculator.new
     assert_instance_of Cipher, cipher
   end
   def test_encrypt_single
-    cipher = Cipher.new
-    key = "37766"
-    offset = [7,1,2,4]
-    assert_equal "y", cipher.encrypt_single("t")
+    cipher = Cipher.new([23, 35, 56, 67])
+    assert_equal "d", cipher.encrypt_single("t")
   end
   def test_encrypt_message
     skip
-    enigma = Enigma.new
+    cipher = Cipher.new([23, 35, 56, 67])
     key = "37766"
     offset = [7,1,2,4]
-    assert_equal "sggq9hq8rn8qdbpcs999dmb9 ", enigma.encrypt_message("this is so secret ..end..")
+    assert_equal "sggq9hq8rn8qdbpcs999dmb9 ", cipher.encrypt_message("this is so secret ..end..")
   end
   def test_decrypt_single
     skip
-    enigma = Enigma.new
+    cipher = Cipher.new
     key = "37766"
     offset = [7,1,2,4]
-    assert_equal "t", enigma.decrypt_single("y", key, offset)
+    assert_equal "t", cipher.decrypt_single("y", key, offset)
   end
   def test_decrypt_message
     skip
-    enigma = Enigma.new
+    cipher = Cipher.new
     key = "37766"
     offset = [7,1,2,4]
-    assert_equal "this is so secret ..end..", enigma.decrypt_message("sggq9hq8rn8qdbpcs999dmb9 ", key, offset)
+    assert_equal "this is so secret ..end..", cipher.decrypt_message("sggq9hq8rn8qdbpcs999dmb9 ", key, offset)
   end
   def test_crack_works
       skip
 
-      enigma = Enigma.new
+      cipher = Cipher.new
       cipher = Cipher.new(message, key = KeyGenerator.new, date = Date.today)
       date = [7,1,2,4]
-      enigma.decrypt_message("sggq9hq8rn8qdbpcs999dmb9 ", key, offset)
-      assert_equal "this is so secret ..end..", enigma.crack
+      cipher.decrypt_message("sggq9hq8rn8qdbpcs999dmb9 ", key, offset)
+      assert_equal "this is so secret ..end..", cipher.crack
       # ("sggq9hq8rn8qdbpcs999dmb9 ", cipher.date)
   end
 
@@ -52,7 +51,7 @@ class CipherTest < Minitest::Test
   def test_turn_key_into_four_two_digit_value_array
       skip
       key = "37766"
-      enigma = Enigma.new
+      enigma = Cipher.new
       assert_equal [37,77,76,66], enigma.turn_key_into_four_two_digit_value_array(key)
   end
 
