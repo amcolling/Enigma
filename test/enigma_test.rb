@@ -23,7 +23,15 @@ class EnigmaTest < Minitest::Test
     key = '40303'
     date = 160518
     e = Enigma.new
-    assert_instance_of String, e.encrypt(output, key, date)
+    assert_instance_of String, e.decrypt(output, key, date)
     assert e.decrypt(output, key, date) != output
   end
+
+  def test_crack
+    output = '2nbzgole1u3znikl2d4fnt9fh'
+    date = 160518
+    e = Enigma.new
+    assert_instance_of Integer, e.crack(output, date)
+  end
+
 end

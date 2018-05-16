@@ -54,13 +54,12 @@ class Cipher
         end
     end
     decrypted_message.compact.join
-end
+  end
 
   def crack(message, date = Date.today)
-    key = '9999'
+    key = 9999
     cracking = decrypt_message(message, key, date)
     key = key.to_i
-    # binding.pry
     until cracking[-7..-1] == '..end..' do
       cracking = decrypt_message(message, key, date)
       key += 1

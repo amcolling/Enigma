@@ -24,7 +24,10 @@ class Enigma
     output = Cipher.new.decrypt_message(output, key, date)
   end
 
-
+  def crack(output, date = Date.today)
+    @date = date
+    output = Cipher.new.crack(output, date)
+  end 
 
 
 

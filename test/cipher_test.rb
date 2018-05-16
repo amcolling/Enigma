@@ -43,18 +43,6 @@ class CipherTest < Minitest::Test
       cipher = Cipher.new
       date = 160518
       actual = cipher.crack("lg1l2h.3knql9b  l9r49mw43", date)
-      assert_equal "this is so secret ..end..", actual
+      assert_equal 23567, actual
   end
-
-
-
-  def test_turn_key_into_four_two_digit_value_array
-      key = "37766"
-      enigma = Cipher.new
-      assert_equal [37,77,76,66], enigma.turn_key_into_four_two_digit_value_array(key)
-  end
-
-
-
-
-  end
+end
