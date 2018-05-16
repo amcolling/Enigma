@@ -1,13 +1,16 @@
+require './lib/key_generator'
+require './lib/offset_calculator'
 require './lib/enigma'
+require './lib/cipher'
 
 filename = File.open(ARGV[0], 'r')
-input_text = filename.read.gsub("\n", " ").strip
+input_text = filename.read
 filename.close
 
-enigma = Enigma.new
+e = Enigma.new
 
 output_file = File.open(ARGV[1], 'w')
-output_file.write(enigma.decrypt(input_text, ARGV[2], ARGV[3]))
+output_file.write(e.decrypt(input_text, ARGV[2]))
 output_file.close
 
-puts "Created 'decrypted.txt' with the key #{enigma.key} and date #{enigma.date}"
+puts "Created 'decrypted.txt' with the key #{e.key} and date #{e.date}"

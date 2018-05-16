@@ -16,7 +16,13 @@ class Enigma
     @key = key
     @date = date
     output = Cipher.new.encrypt_message(my_message, key, date)
-    end
+  end
+
+  def decrypt(output, key, date = Date.today)
+    @key = key
+    @date = date
+    output = Cipher.new.decrypt_message(output, key, date)
+  end
 
 
 

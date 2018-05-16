@@ -49,7 +49,6 @@ class CipherTest < Minitest::Test
 
 
   def test_turn_key_into_four_two_digit_value_array
-      skip
       key = "37766"
       enigma = Cipher.new
       assert_equal [37,77,76,66], enigma.turn_key_into_four_two_digit_value_array(key)
