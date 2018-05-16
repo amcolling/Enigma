@@ -6,21 +6,24 @@ require './lib/cipher'
 
 class CipherTest < Minitest::Test
   def test_it_exists
-    cipher = Cipher.new([23, 35, 56, 67])
+    cipher = Cipher.new
     offset = OffsetCalculator.new
     assert_instance_of Cipher, cipher
   end
+
   def test_encrypt_single
-    cipher = Cipher.new([23, 35, 56, 67])
-    assert_equal "d", cipher.encrypt_single("t")
+    cipher = Cipher.new
+    key = [23, 35, 56, 67]
+    assert_equal "d", cipher.encrypt_single("t", 0, key)
   end
+
   def test_encrypt_message
-    skip
-    cipher = Cipher.new([23, 35, 56, 67])
-    key = "37766"
-    offset = [7,1,2,4]
-    assert_equal "sggq9hq8rn8qdbpcs999dmb9 ", cipher.encrypt_message("this is so secret ..end..")
+    cipher = Cipher.new
+    key = [23, 35, 56, 67]
+    my_message = "this is so secret ..end.."
+    assert_equal "ddzhue9zckoh1.86d6p01ju0v", cipher.encrypt_message("this is so secret ..end..", key)
   end
+
   def test_decrypt_single
     skip
     cipher = Cipher.new

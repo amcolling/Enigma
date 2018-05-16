@@ -17,7 +17,7 @@ class OffsetCalculator
     squared_date = square_the_date(date)
     last_four = slice_into_four(squared_date)
     date_array = string_to_int_array(last_four)
-    binding.pry
+    add_arrays(key_array, date_array)
   end
 
 #if date is Date object it converts it to 6 digit style
