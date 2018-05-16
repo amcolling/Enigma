@@ -55,14 +55,20 @@ class OffsetCalculatorTest < Minitest::Test
     assert_equal [23, 35, 56, 67], offset.key_rotations(offset.key)
   end
 
-  def test_create_offset
+  def test_add_arrays
     offset = OffsetCalculator.new("23567", 51318)
     key_array  = [23, 35, 56, 67]
     date_array = [7, 1, 2, 4]
 
-    assert_equal [30, 36, 58, 71], offset.create(key_array, date_array)
+    assert_equal [30, 36, 58, 71], offset.add_arrays(key_array, date_array)
   end
-  
+
+  def test_it_makes_rotations
+    offset = OffsetCalculator.new("23567", 51318)
+
+    assert_equal [30, 36, 58, 71], offset.create
+  end
+
   # def test_it_generates_a_four_value_array_from_todays_date
   #   skip
   #   offset = OffsetCalculator.new(Date.today)

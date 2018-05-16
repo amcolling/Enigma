@@ -9,6 +9,16 @@ class OffsetCalculator
     @key  = key
     @date = date
   end
+
+  def create
+    key_array = key_rotations(@key)
+    date = reformat_date(@date)
+    squared_date = square_the_date(date)
+    last_four = slice_into_four(squared_date)
+    date_array = string_to_int_array(last_four)
+    add_arrays(key_array, date_array)
+  end
+
 #if date is Date object it converts it to 6 digit style
   def reformat_date(date)
     if date.class == Date
@@ -41,7 +51,7 @@ class OffsetCalculator
     rots << key_array[3..4].join.to_i
   end
 #then it adds together array of date and array of key
-def create(key_array, date_array)
+def add_arrays(key_array, date_array)
   rotation_array = []
   rotation_array << date_array[0] + key_array[0]
   rotation_array << date_array[1] + key_array[1]

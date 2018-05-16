@@ -4,7 +4,7 @@ class Enigma
   attr_reader :a
 
   def initialize
-    @key = KeyGenerator.new.create
+    # @key = KeyGenerator.new.create
     @character_map =
     [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
     "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
