@@ -1,4 +1,3 @@
-require 'pry'
 require 'date'
 class Cipher
   attr_reader :key,
