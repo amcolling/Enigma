@@ -21,7 +21,9 @@ class CipherTest < Minitest::Test
     key = "23567"
     date = 160518
     my_message = "this is so secret ..end.."
-    assert_equal "lg1l2h.3knql9b  l9r49mw43", cipher.encrypt_message("this is so secret ..end..", key, date)
+    expected = "lg1l2h.3knql9b  l9r49mw43"
+    actual = cipher.encrypt_message(my_message, key, date)
+    assert_equal expected, actual
   end
 
   def test_decrypt_single
@@ -30,18 +32,29 @@ class CipherTest < Minitest::Test
     assert_equal "t", cipher.decrypt_single("l", 0, rotations)
   end
 
-
   def test_decrypt_message
     cipher = Cipher.new
     key = "23567"
     date = 160518
-    assert_equal "this is so secret ..end..", cipher.decrypt_message("lg1l2h.3knql9b  l9r49mw43", key, date)
+    actual = cipher.decrypt_message("lg1l2h.3knql9b  l9r49mw43", key, date)
+    expected = "this is so secret ..end.."
+    assert_equal expected, actual
+  end
+
+  def test_can_crack_key
+    cipher = Cipher.new
+    date = 160518
+    message = 'lg1l2h.3knql9b  l9r49mw43'
+    expected = 23567
+    actual = cipher.crack_the_key(message, date)
+    assert_equal expected, actual
   end
 
   def test_crack_works
-      cipher = Cipher.new
-      date = 160518
-      actual = cipher.crack("lg1l2h.3knql9b  l9r49mw43", date)
-      assert_equal 'this is so secret ..end..', actual
+    cipher = Cipher.new
+    date = 160518
+    expected = 'this is so secret ..end..'
+    actual = cipher.crack('lg1l2h.3knql9b  l9r49mw43', date)
+    assert_equal expected, actual
   end
 end
