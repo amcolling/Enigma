@@ -9,7 +9,7 @@ filename.close
 
 e = Enigma.new
 
-output_file = File.open(ARGV[1],'w')
+output_file = File.open(ARGV[1], 'w')
 output_file.write(e.crack(input_text, ARGV[2].to_i))
 output_file.close
 

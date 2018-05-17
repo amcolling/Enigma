@@ -1,5 +1,5 @@
 class KeyGenerator
   def create
-    rand(10000..99999).to_s
+    rand(100_00..999_99).to_s
   end
 end
