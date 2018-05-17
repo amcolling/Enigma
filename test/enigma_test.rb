@@ -28,14 +28,15 @@ class EnigmaTest < Minitest::Test
 
   def test_decrypt_message
     e = Enigma.new
-    output = '2nbzgole1u3znikl2d4fnt9fh'
-    key = '65690'
+    output = '9.22ycj7bjcwyven1.h b.. guz9c.hqm.84cezrmfzozfctz,'
+    key = '97651'
     date = 160518
-    assert_instance_of String, e.decrypt(output, key, date)
-    assert e.decrypt(output, key, date) != output
+    expected = 'i am burning up a sun just to say good bye ..end..'
+    actual = e.decrypt(output, key, date)
+    assert_equal expected, actual
   end
 
-  def test_crack
+  def test_can_crack_key_and_store_it
     date = 160518
     my_message = 'lg1l2h.3knql9b  l9r49mw43'
     e = Enigma.new
@@ -45,4 +46,11 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, actual
   end
 
+  def test_crack_works
+    e = Enigma.new
+    date = 160518
+    expected = 'long live the king ..end..'
+    actual = e.crack('912wvyx.2k8x2kzy.tmowr2twl', date)
+    assert_equal expected, actual
+  end
 end

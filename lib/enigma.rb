@@ -28,7 +28,4 @@ class Enigma
     @cracked_key = Cipher.new.crack_the_key(output, date)
     Cipher.new.crack(output, date)
   end
-
-
-
 end
