@@ -12,6 +12,6 @@ class KeyGeneratorTest < Minitest::Test
     key = KeyGenerator.new
     assert_instance_of String, key.create
     assert 5, key.create.length
-
+    assert key.create[2].to_i <= 9
   end
 end

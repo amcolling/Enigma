@@ -8,15 +8,35 @@ class OffsetCalculatorTest < Minitest::Test
     assert_instance_of OffsetCalculator, offset
   end
 
+  def test_it_stores_key_if_provided
+    offset = OffsetCalculator.new("12345", 150518)
+    assert_equal "12345", offset.key
+  end
+
+  def test_it_creates_new_key_and_stores_it_if_no_key_provided
+    offset = OffsetCalculator.new
+    assert_instance_of String, offset.key
+    assert 5, offset.key.length
+    assert offset.key[2].to_i <= 9
+  end
+
   def test_it_reformats_date
     offset = OffsetCalculator.new(Date.today)
-    assert offset.reformat_date(offset.date) == Date.today.strftime("%e%m%y").to_i
+    expected = offset.reformat_date(offset.date)
+    actual = Date.today.strftime("%e%m%y").to_i
+    assert actual == expected
+  end
+
+  def test_if_date_already_formatted_it_does_nothing
+    offset = OffsetCalculator.new("12345", 150518)
+    expected = offset.reformat_date(offset.date)
+    actual = 150518
+    assert actual == expected
   end
 
   def test_it_squares_the_date_and_changes_integer_to_string
-    offset = OffsetCalculator.new(Date.today)
-    date_reformatted = 51318
-    assert_equal "2633537124", offset.square_the_date(date_reformatted)
+    offset = OffsetCalculator.new("12345", 150518)
+    assert_equal "22655668324", offset.square_the_date(offset.date)
   end
 
   def test_slice_into_four
@@ -35,8 +55,15 @@ class OffsetCalculatorTest < Minitest::Test
     assert_equal expected, actual
   end
 
+  def test_it_adds_date_array_and_key_array
+    offset = OffsetCalculator.new("12345", 150518)
+    key_array = [12, 23, 34, 45]
+    date_array = [8, 3, 2, 4]
+    assert_equal [20, 26, 36, 49], offset.add_arrays(key_array, date_array)
+  end
 
-
-
-
+  def test_it_creates_rotations_array
+    offset = OffsetCalculator.new("12345", 150518)
+    assert_equal [20, 26, 36, 49], offset.create
+  end
 end

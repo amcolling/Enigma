@@ -5,14 +5,12 @@ class Cipher
               :character_map
 
   def initialize
-
     @character_map =
     [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
     "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
     "u", "v", "w", "x", "y", "z", "0", "1", "2", "3",
     "4", "5", "6", "7", "8", "9", " ", ".", ","]
   end
-
 
   def encrypt_single(message_letter, count, rotations)
     zipped_hash = @character_map.zip(@character_map.rotate(rotations[count])).to_h
@@ -28,7 +26,7 @@ class Cipher
       four_letters = letters.shift(4)
       4.times do |num|
         encrypted_message << encrypt_single(four_letters[num], num, rotations)
-        end
+      end
     end
     encrypted_message.compact.join
   end
@@ -37,7 +35,6 @@ class Cipher
     zipped_hash = @character_map.zip(@character_map.rotate(rotations[count])).to_h
     zipped_hash[message_letter]
   end
-
 
   def decrypt_message(my_message, key, date)
     offset = OffsetCalculator.new(key, date)
@@ -50,7 +47,6 @@ class Cipher
       four_letters = letters.shift(4)
       4.times do |num|
         decrypted_message << encrypt_single(four_letters[num], num, rotations)
-
         end
     end
     decrypted_message.compact.join
